@@ -7,7 +7,8 @@ const projectWidth = 430
 const projectHeight = 1739
 
 export const COLORS = {
-    mainColor: "#4682B4"
+    mainColor: "#4682B4",
+    mainColorRGB: {r: 70, g: 130, b: 180}
 }
 
 export const vw = (percentWidth:number) => {
@@ -37,9 +38,10 @@ export const borderStyle:StyleProp<any> = (width: any, color: ColorValue) => {
     }
 }
 
+ 
+
 export const LogoStyles = StyleSheet.create({
     logoStyle: {
-        backgroundColor: COLORS.mainColor,
         width: vw(100), 
         paddingLeft: 10,
         paddingTop: 20,

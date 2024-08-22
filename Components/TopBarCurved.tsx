@@ -1,14 +1,14 @@
 import React, { ReactNode } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { ColorValue, StyleSheet, Text, View } from "react-native";
 import Svg, {Path, G} from 'react-native-svg'
 import { COLORS, vh, vw } from "../style/style";
 
-const TopBarCurved = ({children}: {children: ReactNode}) => { 
+const TopBarCurved = ({children, backgroundColor, opacity}: {children: ReactNode, backgroundColor?:ColorValue, opacity?:number}) => { 
     return (
         <View style={style.viewStyle} >
              <View style={style.svgStyle}>
-                 <Svg width="430" height="785" viewBox="0 0 430 785" fill="none">
-                <Path d="M0.000947479 0H430.001V740.812C258.605 761.696 181.695 823.326 -0.0090332 749.426L0.000947479 0Z" fill={COLORS.mainColor}/>
+                <Svg width="430" height="785" viewBox="0 0 430 785" fill="none">
+                <Path d="M0.000947479 0H430.001V740.812C258.605 761.696 181.695 823.326 -0.0090332 749.426L0.000947479 0Z" fill={backgroundColor} fillOpacity={opacity??1}/>
                 </Svg>  
             </View> 
             <View style={style.componentsStyle}>

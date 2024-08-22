@@ -1,18 +1,28 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import TopBarCurved from "../Components/TopBarCurved";
-import { ScrollView, StatusBar, StyleSheet, View } from "react-native";
+import { NativeScrollEvent, NativeSyntheticEvent, ScrollView, StatusBar, StyleSheet, View } from "react-native";
 import { borderStyle, ButtonStyles, center, COLORS, pxtovh, pxtovw, vh } from "../style/style";
 import { Text } from "react-native";
 import Logo from "../Components/Logo";
 import Button from "../Components/Button";
 import TelephoneIcon from "../Components/TelephoneIcon";
 import ArrowButton from "../Components/ArrowButton";
+import Login from "./Login";
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { RootStackParamList } from "../App";
+
+
+type homeScreenProp = StackNavigationProp<RootStackParamList, 'Home'>;
 
 const Home = () => {
+
+    const navigation = useNavigation<homeScreenProp>();
 
     const user = "Wojciech"
 
     const ScrollViewRef = useRef<ScrollView>(null)
+    const [backgroundOpacity, setBackgroundOpacity] = useState<number>(0); 
 
     const OnScrollBottomClick = () => {
         ScrollViewRef.current?.scrollToEnd();
@@ -21,12 +31,16 @@ const Home = () => {
     const OnScrollTopClick = () => {
         ScrollViewRef.current?.scrollTo({y: 0});
     }
+ 
+    
+
+    const {r:br, g:bg, b:bb} = COLORS.mainColorRGB
 
     return (
         <ScrollView stickyHeaderIndices={[0]} ref={ScrollViewRef}>
-            <Logo/>
+            <Logo backgroundColor={COLORS.mainColor}/>
             <StatusBar backgroundColor={COLORS.mainColor}/>
-            <TopBarCurved>
+            <TopBarCurved backgroundColor={COLORS.mainColor}>
                 
                 {/* Witaj, user */}
                 <Text  style={style.helloUserStyle}>Witaj, <Text style={{fontWeight: "bold"}}>{user}</Text>!</Text>
@@ -39,7 +53,6 @@ const Home = () => {
                         marginTop: 30,}}
                     textStyle={{...ButtonStyles.textStyle, color: COLORS.mainColor,}}
                 />
-
                 {/* W razie nagłego wypadku */}
                 <View style={{...center, marginTop: 40}}>
                     <Text style={{...center, fontSize: 24, color: "#fff", fontWeight: "bold", width: "100%", textAlign: "center"}}>W RAZIE NAGŁEGO WYPADKU</Text>
@@ -57,7 +70,7 @@ const Home = () => {
                 {/* Arrow to bottom */}
                 <View style={{display: "flex", flexDirection: "row", alignContent: "center", justifyContent: "center", marginTop: 15}}>
                     <ArrowButton
-                        backgroundColor={"white"}
+                        backgroundColor={'white'}
                         strokeColor={COLORS.mainColor}
                         onPress={OnScrollBottomClick}
                     />
@@ -70,6 +83,7 @@ const Home = () => {
                     style={{...ButtonStyles.buttonStyle, backgroundColor: COLORS.mainColor, ...center}}
                     text="MOJE ZWIERZĘTA"
                     textStyle={{...ButtonStyles.textStyle, color: "#fff"}}
+                    onPress={()=>navigation.navigate("Login")} 
                 />
                 <Button
                     style={{...ButtonStyles.buttonStyle, backgroundColor: COLORS.mainColor, ...center, marginTop: 20}}
