@@ -31,10 +31,17 @@ export const pxtovh = (pixelHeight:number) => {
     return vh((pixelHeight / projectHeight) * 100)
 }
 
-export const borderStyle:StyleProp<any> = (width: any, color: ColorValue) => {
+export const borderStyle:StyleProp<any> = (width: any, color?: ColorValue) => {
     return {
         borderWidth: width,
-        borderColor: color,
+        borderColor: color??"black",
+    }
+}
+
+export const borderBottomStyle:StyleProp<any> = (width: any, color?: ColorValue) => {
+    return {
+        borderBottomWidth: width,
+        borderBottomColor: color??"black",
     }
 }
 
