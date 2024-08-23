@@ -19,7 +19,7 @@ const Home = () => {
 
     const navigation = useNavigation<homeScreenProp>();
 
-    const user = "Wojciech"
+    const user = null
 
     const ScrollViewRef = useRef<ScrollView>(null)
     const [backgroundOpacity, setBackgroundOpacity] = useState<number>(0); 
@@ -77,7 +77,8 @@ const Home = () => {
                 </View>
             </TopBarCurved>
             
-            {/* Menu */}
+            {/* Menu Logged*/}
+            {user!=null &&
             <View style={{paddingBottom: vh(11), marginTop: vh(15)}}>
                 <Button
                     style={{...ButtonStyles.buttonStyle, backgroundColor: COLORS.mainColor, ...center}}
@@ -109,7 +110,36 @@ const Home = () => {
                     />
                 </View>
             </View>
-            
+
+            }
+
+
+            {/* Menu not logged */}
+            {user==null &&
+            <View style={{paddingBottom: vh(11), marginTop: vh(15)}}>
+                <Button
+                    style={{...ButtonStyles.buttonStyle, backgroundColor: COLORS.mainColor, ...center}}
+                    text="ZALOGUJ SIĘ"
+                    textStyle={{...ButtonStyles.textStyle, color: "#fff"}}
+                    onPress={()=>navigation.navigate("Login")} 
+                />
+                <Button
+                    style={{...ButtonStyles.buttonStyle, backgroundColor: COLORS.mainColor, ...center, marginTop: 20}}
+                    text="ZAŁÓŻ KONTO"
+                    textStyle={{...ButtonStyles.textStyle, color: "#fff"}}
+                    onPress={()=>navigation.navigate("Register")} 
+                />
+                {/* Arrow to top */}
+                <View style={{display: "flex", flexDirection: "row", alignContent: "center", justifyContent: "center", marginTop: 50}}>
+                    <ArrowButton
+                        style={{transform: [{rotateZ: "180deg"}]}}
+                        strokeColor={COLORS.mainColor}
+                        onPress={OnScrollTopClick}
+                    />
+                </View>
+            </View>
+
+            }
         </ScrollView>
     )
 }
