@@ -2,8 +2,9 @@ import React, { act, useEffect, useState } from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
 import { Text } from "react-native";
 import HorizontalSwitch from "../Components/HorizontalSwitch";
-import { center, COLORS, pxtovw, vw } from "../style/style";
+import { ButtonStyles, center, COLORS, pxtovw, vh, vw } from "../style/style";
 import PetListElement from "../Components/PetListElement";
+import Button from "../Components/Button";
 
 const MyPets = () => {
 
@@ -17,6 +18,12 @@ const MyPets = () => {
         {type: 0, name: "Afik", breed: "Shih Tzu"},
         {type: 1, name: "Miśka", breed: "Dachowiec"},
         {type: 0, name: "Murzyn", breed: "Kundel"},
+        {type: 0, name: "Murzyn", breed: "Kundel"},
+        {type: 0, name: "Murzyn", breed: "Kundel"},
+        {type: 0, name: "Murzyn", breed: "Kundel"},
+        {type: 0, name: "Murzyn", breed: "Kundel"},
+        {type: 0, name: "Murzyn", breed: "Kundel"},
+        {type: 0, name: "Murzyn", breed: "Kundel"},
         {type: 2, name: "Tofik"},
     ]
 
@@ -27,7 +34,8 @@ const MyPets = () => {
     }
 
     return (
-        <ScrollView>
+        <>
+        <ScrollView style={{marginBottom: 100}}>
             <Text style={style.headerStyle}>Twoje zwierzęta</Text>
             <HorizontalSwitch 
                 style={{ width: vw(90), ...center}} 
@@ -40,7 +48,7 @@ const MyPets = () => {
             />
 
             {/* Pets */}
-            <View style={{width: vw(90), marginTop: 20, ...center}}>
+            <View style={{width: vw(90), marginTop: 20, ...center, height: "100%"}}>
                 {
                     activeType!=-1 ?
                     arr.filter((arr_f:{type:number, name:string, breed?:string})=>arr_f.type==activeType).
@@ -53,9 +61,14 @@ const MyPets = () => {
                         return <PetListElement key={k} name={v.name} breed={v.breed} type={type}/>
                     })
                 }
+                
             </View>
             
         </ScrollView>
+        <Button text="DODAJ ZWIERZĘ" style={{backgroundColor: COLORS.mainColor, ...ButtonStyles.buttonStyle, left: vw(5), position: 'absolute', bottom: 10}} textStyle={{color: "#fff", ...ButtonStyles.textStyle}}/>
+            
+
+        </>
     )
 }
 

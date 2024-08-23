@@ -21,8 +21,7 @@ const Home = () => {
 
     const user = "Wojciech"
 
-    const ScrollViewRef = useRef<ScrollView>(null)
-    const [backgroundOpacity, setBackgroundOpacity] = useState<number>(0); 
+    const ScrollViewRef = useRef<ScrollView>(null) 
 
     const OnScrollBottomClick = () => {
         ScrollViewRef.current?.scrollToEnd();
