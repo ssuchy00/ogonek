@@ -44,6 +44,12 @@ export const borderBottomStyle:StyleProp<any> = (width: any, color?: ColorValue)
         borderBottomColor: color??"black",
     }
 }
+export const borderLeftStyle:StyleProp<any> = (width: any, color?: ColorValue) => {
+    return {
+        borderLeftWidth: width,
+        borderLeftColor: color??"black",
+    }
+}
 
  
 

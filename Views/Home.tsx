@@ -19,7 +19,7 @@ const Home = () => {
 
     const navigation = useNavigation<homeScreenProp>();
 
-    const user = null
+    const user = "Wojciech"
 
     const ScrollViewRef = useRef<ScrollView>(null)
     const [backgroundOpacity, setBackgroundOpacity] = useState<number>(0); 
@@ -84,7 +84,7 @@ const Home = () => {
                     style={{...ButtonStyles.buttonStyle, backgroundColor: COLORS.mainColor, ...center}}
                     text="MOJE ZWIERZĘTA"
                     textStyle={{...ButtonStyles.textStyle, color: "#fff"}}
-                    onPress={()=>navigation.navigate("Login")} 
+                    onPress={()=>navigation.navigate("MyPets")} 
                 />
                 <Button
                     style={{...ButtonStyles.buttonStyle, backgroundColor: COLORS.mainColor, ...center, marginTop: 20}}

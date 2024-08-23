@@ -6,6 +6,7 @@ import Home from "./Views/Home";
 import Login from "./Views/Login";
 import { COLORS } from "./style/style";
 import Register from "./Views/Register";
+import MyPets from "./Views/MyPets";
 
 
 
@@ -13,6 +14,7 @@ export type RootStackParamList = {
   Login: undefined;
   Home: undefined;
   Register: undefined;
+  MyPets: undefined;
 };
 
 const App = () => {
@@ -31,6 +33,7 @@ const App = () => {
             <Stack.Screen name="Home" component={Home} />
             <Stack.Screen name="Login" component={Login} />
             <Stack.Screen name="Register" component={Register} />
+            <Stack.Screen name="MyPets" component={MyPets} />
           </Stack.Navigator>
     </NavigationContainer>
   )
