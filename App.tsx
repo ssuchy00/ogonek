@@ -9,6 +9,8 @@ import Register from "./Views/Register";
 import MyPets from "./Views/MyPets";
 import Pet, { petInterface } from "./Views/Pet";
 import BookAppointment_screen1, { BookAppointment_screen1Interface } from "./Views/BookAppointment_screen1";
+import BookAppointment_screen2, { BookAppointment_screen2Interface } from "./Views/BookAppointment_screen2";
+import BookAppointment_screen3, { BookAppointment_screen3Interface } from "./Views/BookAppointment_screen3";
 
 
 
@@ -19,6 +21,8 @@ export type RootStackParamList = {
   MyPets: undefined;
   Pet: {pet:petInterface};
   BookAppointment_screen1: BookAppointment_screen1Interface
+  BookAppointment_screen2: BookAppointment_screen2Interface
+  BookAppointment_screen3: BookAppointment_screen3Interface
 };
 
 const App = () => {
@@ -40,6 +44,8 @@ const App = () => {
             <Stack.Screen name="MyPets" component={MyPets} />
             <Stack.Screen name="Pet" component={Pet} />
             <Stack.Screen name="BookAppointment_screen1" component={BookAppointment_screen1} />
+            <Stack.Screen name="BookAppointment_screen2" component={BookAppointment_screen2} />
+            <Stack.Screen name="BookAppointment_screen3" component={BookAppointment_screen3} />
           </Stack.Navigator>
     </NavigationContainer>
   )

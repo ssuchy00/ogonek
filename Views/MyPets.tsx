@@ -38,7 +38,6 @@ export const petsArr:Array<petInterface> = [
 const MyPets = () => {
 
     const navigation = useNavigation<myPetsScreenProp>();
-    
 
     const petOnClickHandle = (pet:petInterface) => {
         navigation.navigate("Pet", {pet})
@@ -46,10 +45,9 @@ const MyPets = () => {
 
     return (
         <>
+        <Text style={style.headerStyle}>Twoje zwierzęta</Text>
         <PetsList onChoose={petOnClickHandle} />
         <Button text="DODAJ ZWIERZĘ" style={{backgroundColor: COLORS.mainColor, ...ButtonStyles.buttonStyle, left: vw(5), position: 'absolute', bottom: 10}} textStyle={{color: "#fff", ...ButtonStyles.textStyle}}/>
-            
-
         </>
     )
 }

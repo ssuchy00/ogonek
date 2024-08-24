@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { View,Text, TextInput, StyleSheet, TextStyle } from "react-native";  
 import { Dropdown } from "react-native-element-dropdown";
 import Button from "../Components/Button";
 import { ButtonStyles, center, COLORS, vh, vw } from "../style/style";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { RootStackParamList } from "../App";
+import { useNavigation } from "@react-navigation/native";
 
 export interface appointmentInterface {
     id:number,
@@ -23,14 +26,24 @@ export const appointmentTypes:Array<appointmentInterface> = [
     {id:3, name:"Inne", time: 30, minPrice: 0, maxPrice:0},
 ]
 
+type BookAppointmentParamList = StackNavigationProp<RootStackParamList, 'BookAppointment_screen1'>;
+
+
 const BookAppointment_screen1 = ({route}:{route:any}) => {
     
+    const navigation = useNavigation<BookAppointmentParamList>();
+
+    const choosenType = useRef<number>(-1) 
+    const descriptionRef = useRef<string>("")
+
     const onTypeChooseHandle = (choosen:appointmentInterface) => {
-        const {petID}:BookAppointment_screen1Interface = route.props
-        if(petID)
-        {
-            
-        }
+        choosenType.current = choosen.id
+    }
+
+    const nextClickHandle = () => {
+        console.log(choosenType.current, descriptionRef.current)
+        navigation.navigate("BookAppointment_screen2", 
+            {appointmentDescription:descriptionRef.current, appointmentTypeID:choosenType.current});
     }
 
     return (
@@ -51,11 +64,13 @@ const BookAppointment_screen1 = ({route}:{route:any}) => {
             />
             
             <Text style={style.header2Style}>Szczegóły</Text>
-            <TextInput multiline style={style.textAreaStyle}/>
+            <TextInput multiline style={style.textAreaStyle} 
+                onChange={(e)=>descriptionRef.current=e.nativeEvent.text}/> 
             <Button 
                 text="Dalej >"
                 style={{...ButtonStyles.buttonStyle, backgroundColor: COLORS.mainColor, ...center, marginTop: 20}}
                 textStyle={{...ButtonStyles.textStyle, color: "#fff"}}
+                onPress={nextClickHandle}
             />
         </View>
     )

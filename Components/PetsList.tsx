@@ -12,20 +12,16 @@ export interface PetsListInterface {
 
 const PetsList = (props:PetsListInterface) => {
 
-    const [activeType, setActiveType] = useState<number>(-1)
+    const [ activeType, setActiveType] = useState<number>(-1)
 
     const onTypeChange = (index:number) => { 
         setActiveType(index);
     }
 
-    const petOnClickHandle = (pet:petInterface) => {
-        //navigation.navigate("Pet", {pet})
-    }
-
     return (
         <>
         <ScrollView style={{marginBottom: 100}}>
-            <Text style={style.headerStyle}>Twoje zwierzęta</Text>
+            
             <HorizontalSwitch 
                 style={{ width: vw(90), ...center}} 
                 activeColor={COLORS.mainColor} 
@@ -59,12 +55,6 @@ const PetsList = (props:PetsListInterface) => {
     )
 }
 
-const style = StyleSheet.create({
-    headerStyle: {
-        fontSize: 40,
-        textAlign: "center",
-        margin: 10
-    }
-})
+
 
 export default PetsList
