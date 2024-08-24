@@ -56,7 +56,7 @@ const style = StyleSheet.create({
         flexDirection: "row",
     },
     checkBoxDisabledStyle: {
-        opacity: 0.5
+        opacity: 0.8
     },
     boxStyle: {
         height: "100%",

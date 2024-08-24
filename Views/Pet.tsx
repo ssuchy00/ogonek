@@ -66,7 +66,8 @@ const Pet = ({route}:{route:any}) => {
                     boxStyle={{height: 40}}
                     style={{marginLeft: 5, marginTop: 10}}
                     disabled
-                    
+                    checked
+                    onPress={(checked:boolean)=>{}}
                 />
 
                 <Button 
@@ -91,7 +92,8 @@ const style = StyleSheet.create({
         fontWeight: "bold",
         textAlign: "left",
         marginLeft: 5,
-        letterSpacing: 2
+        letterSpacing: 2,
+        color: "#333"
     },
     mainProfileStyle: { 
         marginTop: 10,
