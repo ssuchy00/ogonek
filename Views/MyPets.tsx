@@ -5,32 +5,49 @@ import HorizontalSwitch from "../Components/HorizontalSwitch";
 import { ButtonStyles, center, COLORS, pxtovw, vh, vw } from "../style/style";
 import PetListElement from "../Components/PetListElement";
 import Button from "../Components/Button";
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { RootStackParamList } from "../App";
+import { NativeSearchBar } from "react-native-screens"; 
+import { petInterface } from "./Pet";
+
+
+type myPetsScreenProp = StackNavigationProp<RootStackParamList, 'MyPets'>;
+
+
+export const breeds = [
+    {name: "Pies", id: 0},
+    {name: "Kot", id: 1},
+    {name: "Koszatniczka", id: 2},
+]
 
 const MyPets = () => {
 
-    const breeds = [
-        {name: "Pies", id: 0},
-        {name: "Kot", id: 1},
-        {name: "Koszatniczka", id: 2},
+    const navigation = useNavigation<myPetsScreenProp>();
+
+    
+
+    const arr:Array<petInterface> = [
+        {id: 0, type: 0, name: "Afik", breed: "Shih Tzu"},
+        {id: 1, type: 1, name: "Miśka", breed: "Dachowiec"},
+        {id: 2, type: 0, name: "Murzyn", breed: "Kundel"},
+        {id: 3, type: 0, name: "Murzyn", breed: "Kundel"},
+        {id: 4, type: 0, name: "Murzyn", breed: "Kundel"},
+        {id: 5,type: 0, name: "Murzyn", breed: "Kundel"},
+        {id: 6,type: 0, name: "Murzyn", breed: "Kundel"},
+        {id: 7,type: 0, name: "Murzyn", breed: "Kundel"},
+        {id: 8,type: 0, name: "Murzyn", breed: "Kundel"},
+        {id: 9,type: 2, name: "Tofik"},
     ]
 
-    const arr = [
-        {type: 0, name: "Afik", breed: "Shih Tzu"},
-        {type: 1, name: "Miśka", breed: "Dachowiec"},
-        {type: 0, name: "Murzyn", breed: "Kundel"},
-        {type: 0, name: "Murzyn", breed: "Kundel"},
-        {type: 0, name: "Murzyn", breed: "Kundel"},
-        {type: 0, name: "Murzyn", breed: "Kundel"},
-        {type: 0, name: "Murzyn", breed: "Kundel"},
-        {type: 0, name: "Murzyn", breed: "Kundel"},
-        {type: 0, name: "Murzyn", breed: "Kundel"},
-        {type: 2, name: "Tofik"},
-    ]
-
-    const [activeType, setActiveType] = useState<number>(0)
+    const [activeType, setActiveType] = useState<number>(-1)
 
     const onTypeChange = (index:number) => { 
         setActiveType(index);
+    }
+
+    const petOnClickHandle = (pet:petInterface) => {
+        navigation.navigate("Pet", {pet})
     }
 
     return (
@@ -51,14 +68,14 @@ const MyPets = () => {
             <View style={{width: vw(90), marginTop: 20, ...center, height: "100%"}}>
                 {
                     activeType!=-1 ?
-                    arr.filter((arr_f:{type:number, name:string, breed?:string})=>arr_f.type==activeType).
+                    arr.filter((arr_f:petInterface)=>arr_f.type==activeType).
                     map((v,k)=>{
                         const type:string = (breeds.filter((f:{name:string, id:number})=>f.id==v.type)[0])?.name
-                        return <PetListElement key={k} name={v.name} breed={v.breed} type={type}/>
+                        return <PetListElement onPress={(pet)=>petOnClickHandle(v)} key={k} pet={v} />
                     }) :
                     arr.map((v,k)=>{
                         const type:string = (breeds.filter((f:{name:string, id:number})=>f.id==v.type)[0])?.name
-                        return <PetListElement key={k} name={v.name} breed={v.breed} type={type}/>
+                        return <PetListElement onPress={(id)=>petOnClickHandle(v)} key={k} pet={v}/>
                     })
                 }
                 

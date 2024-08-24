@@ -10,7 +10,7 @@ interface arrayInterface {
 
 const HorizontalSwitch = (props: {onChange?: (index:number)=>void, options:Array<arrayInterface>, backgroundColor?:ColorValue, activeColor?:ColorValue, borderColor?:ColorValue, style?:StyleProp<ViewStyle>}) => {
     const [optionWidth, setOptionWidth] = useState<number>(0)
-    const [currentOption, setCurrentOption] = useState<number>(0);
+    const [currentOption, setCurrentOption] = useState<number>(-1);
 
     useEffect(()=>{
         const len = props.options.length==0 ? 1 : props.options.length
