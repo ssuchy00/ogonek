@@ -8,6 +8,7 @@ import { COLORS } from "./style/style";
 import Register from "./Views/Register";
 import MyPets from "./Views/MyPets";
 import Pet, { petInterface } from "./Views/Pet";
+import BookAppointment_screen1, { BookAppointment_screen1Interface } from "./Views/BookAppointment_screen1";
 
 
 
@@ -17,6 +18,7 @@ export type RootStackParamList = {
   Register: undefined;
   MyPets: undefined;
   Pet: {pet:petInterface};
+  BookAppointment_screen1: BookAppointment_screen1Interface
 };
 
 const App = () => {
@@ -37,6 +39,7 @@ const App = () => {
             <Stack.Screen name="Register" component={Register} />
             <Stack.Screen name="MyPets" component={MyPets} />
             <Stack.Screen name="Pet" component={Pet} />
+            <Stack.Screen name="BookAppointment_screen1" component={BookAppointment_screen1} />
           </Stack.Navigator>
     </NavigationContainer>
   )

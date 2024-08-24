@@ -19,7 +19,7 @@ export interface petInterface {
 
 const Pet = ({route}:{route:any}) => {
 
-    //const navigation = useNavigation<petScreenProp>()
+    const navigation = useNavigation<petScreenProp>()
 
     const {id,name,type,breed}:petInterface = route.params.pet
 
@@ -52,6 +52,7 @@ const Pet = ({route}:{route:any}) => {
                     text="UMÓW WIZYTĘ"
                     style={{...ButtonStyles.buttonStyle, ...style.buttonStyle}}
                     textStyle={{...ButtonStyles.textStyle, ...style.buttonTextStyle}}
+                    onPress={()=>navigation.navigate("BookAppointment_screen1", {petID:id})}
                 />
                 <Button 
                     text="TERMINY"
