@@ -70,12 +70,6 @@ const Pet = ({route}:{route:any}) => {
                     checked
                     onPress={(checked:boolean)=>{}}
                 />
-
-                <Button 
-                    text="USUŃ"
-                    style={{...ButtonStyles.buttonStyle, backgroundColor: "#B44646", marginTop: 20}}
-                    textStyle={{...ButtonStyles.textStyle, color: "#fff"}}
-                />
                 
             </View>
         </View>
