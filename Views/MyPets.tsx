@@ -24,7 +24,7 @@ export const breeds = [
 
 export const petsArr:Array<petInterface> = [
     {id: 0, type: 0, name: "Afik", breed: "Shih Tzu"},
-    {id: 1, type: 1, name: "Miśka", breed: "Dachowiec"},
+    {id: 1, type: 0, name: "Przemek", breed: "Kundel"},
     {id: 2, type: 0, name: "Murzyn", breed: "Kundel"},
     {id: 3, type: 0, name: "Murzyn", breed: "Kundel"},
     {id: 4, type: 0, name: "Murzyn", breed: "Kundel"},

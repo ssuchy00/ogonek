@@ -40,6 +40,7 @@ const BookAppointment_screen3 = ({route}:{route:any}) => {
 
     const onNextPress = () => {
         console.log("NEXT", selectedHour.current, selected)
+        navigation.navigate("BookAppointment_screen4", {appointmentDescription, appointmentTypeID, pet, date:selected, time:selectedHourState??{hour:0,minutes:0}})
     }
     
     return (

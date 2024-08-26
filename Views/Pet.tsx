@@ -14,7 +14,8 @@ export interface petInterface {
     id:number,
     name:string,
     type:number,
-    breed?:string
+    breed?:string,
+    age?: number
 }
 
 const Pet = ({route}:{route:any}) => {
