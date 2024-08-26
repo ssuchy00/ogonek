@@ -51,6 +51,7 @@ const Home = () => {
                         ...center,
                         marginTop: 30,}}
                     textStyle={{...ButtonStyles.textStyle, color: COLORS.mainColor,}}
+                    onPress={()=>navigation.navigate("BookAppointment_screen1", {})}
                 />
                 {/* W razie nagłego wypadku */}
                 <View style={{...center, marginTop: 40}}>

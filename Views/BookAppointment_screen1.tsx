@@ -6,6 +6,7 @@ import { ButtonStyles, center, COLORS, vh, vw } from "../style/style";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../App";
 import { useNavigation } from "@react-navigation/native";
+import { petInterface } from "./Pet";
 
 export interface appointmentInterface {
     id:number,
@@ -16,7 +17,7 @@ export interface appointmentInterface {
 }
 
 export interface BookAppointment_screen1Interface {
-    petID?:number,
+    pet?:petInterface,
 }
 
 export const appointmentTypes:Array<appointmentInterface> = [
@@ -42,9 +43,9 @@ const BookAppointment_screen1 = ({route}:{route:any}) => {
     }
 
     const nextClickHandle = () => {
-        console.log(choosenType.current, descriptionRef.current)
+        console.log(route.params)
         navigation.navigate("BookAppointment_screen2", 
-            {appointmentDescription:descriptionRef.current, appointmentTypeID:choosenTypeState});
+            {appointmentDescription:descriptionRef.current, appointmentTypeID:choosenTypeState, pet:route.params.pet});
     }
 
     return (

@@ -53,7 +53,7 @@ const Pet = ({route}:{route:any}) => {
                     text="UMÓW WIZYTĘ"
                     style={{...ButtonStyles.buttonStyle, ...style.buttonStyle}}
                     textStyle={{...ButtonStyles.textStyle, ...style.buttonTextStyle}}
-                    onPress={()=>navigation.navigate("BookAppointment_screen1", {petID:id})}
+                    onPress={()=>navigation.navigate("BookAppointment_screen1", {pet:route.params.pet})}
                 />
                 <Button 
                     text="TERMINY"

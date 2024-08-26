@@ -10,6 +10,7 @@ import { petInterface } from "./Pet";
 export interface BookAppointment_screen2Interface {
     appointmentTypeID: number
     appointmentDescription:string
+    pet:petInterface
 }
 
 type BookAppointmentParamList = StackNavigationProp<RootStackParamList, 'BookAppointment_screen2'>;
@@ -18,10 +19,15 @@ const BookAppointment_screen2 = ({route}:{route:any}) => {
 
     const navigation = useNavigation<BookAppointmentParamList>();
     const {appointmentDescription,appointmentTypeID}:BookAppointment_screen2Interface = route.params;
-
+    const params = route.params
     const onAnimalChooseHandler = (pet:petInterface) => {
         navigation.navigate("BookAppointment_screen3", {appointmentDescription, appointmentTypeID,pet})
     }
+
+    useEffect(()=>{
+        console.log("params:", params)
+        if(params.pet!=undefined)navigation.navigate("BookAppointment_screen3", {appointmentDescription, appointmentTypeID, pet:params.pet})
+    }, [])
 
     return (
         <>
