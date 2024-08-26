@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ScrollView, StyleSheet, Text, View,  } from "react-native";
-import { borderStyle, center, vh, vw } from "../style/style";
+import { borderStyle, ButtonStyles, center, COLORS, vh, vw } from "../style/style";
 import PetsList from "../Components/PetsList";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../App";
 import { useNavigation } from "@react-navigation/native";
 import { petInterface } from "./Pet";
 import { Calendar, LocaleConfig } from "react-native-calendars";
-import ChooseHour from "../Components/ChooseHour";
+import ChooseHour, { hourInterface } from "../Components/ChooseHour";
+import Button from "../Components/Button";
 
 export interface BookAppointment_screen3Interface {
     appointmentTypeID: number
@@ -18,19 +19,27 @@ export interface BookAppointment_screen3Interface {
 type BookAppointmentParamList = StackNavigationProp<RootStackParamList, 'BookAppointment_screen3'>;
 
 const BookAppointment_screen3 = ({route}:{route:any}) => {
-
     const navigation = useNavigation<BookAppointmentParamList>();
     const {appointmentDescription,appointmentTypeID,pet}:BookAppointment_screen3Interface = route.params;
-
+    const selectedHour = useRef<hourInterface | null>(null)
+    const [selectedHourState, setSelectedHourState] = useState<hourInterface | null>(null)
     const [selected, setSelected] = useState<string>("")
 
     useEffect(()=>{
-        console.log(route.params)
-    }, [])
+        console.log(selected, selectedHour)
+    }, [selected])
 
 
     const onDayPress = (day:any) =>{
         setSelected(day.dateString)
+    }
+
+    const onHourPress = (hour:hourInterface) => {
+        setSelectedHourState(hour)
+    }
+
+    const onNextPress = () => {
+        console.log("NEXT", selectedHour.current, selected)
     }
     
     return (
@@ -57,7 +66,15 @@ const BookAppointment_screen3 = ({route}:{route:any}) => {
                 maxHour={18}
                 timeDivision={4}
                 style={style.chooseHourStyle}
-            />           
+                onChoose={onHourPress}
+            />    
+            <Button
+                style={{...ButtonStyles.buttonStyle, backgroundColor: COLORS.mainColor, ...center, marginTop: 20}}
+                textStyle={{...ButtonStyles.textStyle, color: "#fff"}}
+                text="Dalej >"
+                onPress={onNextPress}
+                disabled={(selected=="" || selectedHourState==null)}
+            />       
         </ScrollView>
     )
 }

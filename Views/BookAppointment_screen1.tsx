@@ -34,16 +34,17 @@ const BookAppointment_screen1 = ({route}:{route:any}) => {
     const navigation = useNavigation<BookAppointmentParamList>();
 
     const choosenType = useRef<number>(-1) 
+    const [choosenTypeState, setChoosenType] = useState<number>(-1)
     const descriptionRef = useRef<string>("")
 
     const onTypeChooseHandle = (choosen:appointmentInterface) => {
-        choosenType.current = choosen.id
+        setChoosenType(choosen.id)
     }
 
     const nextClickHandle = () => {
         console.log(choosenType.current, descriptionRef.current)
         navigation.navigate("BookAppointment_screen2", 
-            {appointmentDescription:descriptionRef.current, appointmentTypeID:choosenType.current});
+            {appointmentDescription:descriptionRef.current, appointmentTypeID:choosenTypeState});
     }
 
     return (
@@ -71,6 +72,7 @@ const BookAppointment_screen1 = ({route}:{route:any}) => {
                 style={{...ButtonStyles.buttonStyle, backgroundColor: COLORS.mainColor, ...center, marginTop: 20}}
                 textStyle={{...ButtonStyles.textStyle, color: "#fff"}}
                 onPress={nextClickHandle}
+                disabled={choosenTypeState==-1}
             />
         </View>
     )
