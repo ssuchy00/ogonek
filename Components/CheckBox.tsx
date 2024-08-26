@@ -28,7 +28,7 @@ const CheckBox = (props:checkboxInterface) => {
     const onPressHandle = () => {
         const checked = !isChecked;
         setIsChecked(checked)
-        props.onPress?props.onPress(false):null
+        props.onPress?props.onPress(checked):null
     }
 
     useEffect(()=>{
