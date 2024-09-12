@@ -48,7 +48,7 @@ const Table = (props:TableInterface) => {
                 {
                     props.data?.map((e:Array<string | number>,k:number)=>{
                         return (
-                        <View style={{...style.rowStyle}}>
+                        <View style={{...style.rowStyle}} key={"row"+k}>
                             {e.map((cell, cell_k)=>{
                             return <Text 
                             style={{

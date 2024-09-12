@@ -40,6 +40,7 @@ const ChooseHour = (props:ChooseHourInterface) => {
                         <View 
                             style={{...style.rowStyle, ...(currHour<props.maxHour?borderBottomStyle(1, "lightgray"):null)}}
                             onLayout={onLayout}
+                            key={"main"+key}
                         >
                             {
                                 Array.from(Array(props.timeDivision).keys()).map((f,l)=>{
