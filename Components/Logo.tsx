@@ -16,7 +16,7 @@ const Logo = (props: {backgroundColor?:ColorValue, textColor?:ColorValue}) => {
                 <Circle cx="41.8101" cy="34.5353" r="7.63505" fill="#D9D9D9"/>
                 <Rect x="11.6538" y="14.3906" width="9.16234" height="31.2041" transform="rotate(-39.5845 11.6538 14.3906)" fill="#D9D9D9"/>
             </Svg>
-            <Text style={{...LogoStyles.textStyle, backgroundColor: props.backgroundColor}}>NAZWA</Text>
+            <Text style={{...LogoStyles.textStyle, backgroundColor: props.backgroundColor}}>OGONEK</Text>
         </View>
     )
 }

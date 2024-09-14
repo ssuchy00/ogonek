@@ -17,10 +17,10 @@ export interface BookAppointment_screen4Interface {
 }
 
 export const OwnerData =  {
-    name: "Jakób",
-    lastname: "Andrzejewski-Augenhajer",
-    address: "ul. Papieska 21/37",
-    city: "Uć"
+    name: "Jan",
+    lastname: "Kowalski",
+    address: "ul. Narutowicza 217",
+    city: "Łódź"
 }
 
 const BookAppointment_screen4 = ({route}:{route:any}) => {

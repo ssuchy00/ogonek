@@ -20,6 +20,7 @@ const Home = () => {
     const navigation = useNavigation<homeScreenProp>();
 
     const user = "Wojciech"
+    const [userLogged, setUserLogged] = useState<string|null>(null)
 
     const ScrollViewRef = useRef<ScrollView>(null) 
 
@@ -61,8 +62,8 @@ const Home = () => {
                         <TelephoneIcon style={{marginRight: 5}}/>
                         <View style={{marginLeft: 5}}>
                             <Text style={style.emergencyText1}>Ul. Weterynaryjna 20</Text>
-                            <Text style={style.emergencyText1}>01-420 Warszawa</Text>
-                            <Text style={style.emergencyText1}>tel: 421 769 420</Text>
+                            <Text style={style.emergencyText1}>00-001 Warszawa</Text>
+                            <Text style={style.emergencyText1}>tel: 421 769 419</Text>
                             <Text style={{...style.emergencyText1, ...style.emergencyText2}}>Otwarte całą dobę</Text>
                         </View>
                     </View>
@@ -78,7 +79,7 @@ const Home = () => {
             </TopBarCurved>
             
             {/* Menu Logged*/}
-            {user!=null &&
+            {userLogged!=null &&
             <View style={{paddingBottom: vh(11), marginTop: vh(15)}}>
                 <Button
                     style={{...ButtonStyles.buttonStyle, backgroundColor: COLORS.mainColor, ...center}}
@@ -90,6 +91,7 @@ const Home = () => {
                     style={{...ButtonStyles.buttonStyle, backgroundColor: COLORS.mainColor, ...center, marginTop: 20}}
                     text="OSTATNIE WIZYTY"
                     textStyle={{...ButtonStyles.textStyle, color: "#fff"}}
+                    onPress={()=>navigation.navigate("MedicalRecordsChoosePet",{})}
                 />
                 <Button
                     style={{...ButtonStyles.buttonStyle, backgroundColor: COLORS.mainColor, ...center, marginTop: 20}}
@@ -100,6 +102,7 @@ const Home = () => {
                     style={{...ButtonStyles.buttonStyle, ...borderStyle(4, COLORS.mainColor), backgroundColor: "#fff", ...center, marginTop: 40}}
                     text="WYLOGUJ SIĘ"
                     textStyle={{...ButtonStyles.textStyle, color: COLORS.mainColor}}
+                    onPress={()=>setUserLogged(null)}
                 />
                 {/* Arrow to top */}
                 <View style={{display: "flex", flexDirection: "row", alignContent: "center", justifyContent: "center", marginTop: 50}}>
@@ -115,13 +118,14 @@ const Home = () => {
 
 
             {/* Menu not logged */}
-            {user==null &&
+            {userLogged==null &&
             <View style={{paddingBottom: vh(11), marginTop: vh(15)}}>
                 <Button
                     style={{...ButtonStyles.buttonStyle, backgroundColor: COLORS.mainColor, ...center}}
                     text="ZALOGUJ SIĘ"
                     textStyle={{...ButtonStyles.textStyle, color: "#fff"}}
-                    onPress={()=>navigation.navigate("Login")} 
+                    // onPress={()=>navigation.navigate("Login")} 
+                    onPress={()=>setUserLogged("Wojciech")} 
                 />
                 <Button
                     style={{...ButtonStyles.buttonStyle, backgroundColor: COLORS.mainColor, ...center, marginTop: 20}}
