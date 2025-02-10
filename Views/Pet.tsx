@@ -59,6 +59,12 @@ const Pet = ({route}:{route:any}) => {
                     text="TERMINY"
                     style={{...ButtonStyles.buttonStyle, ...style.buttonStyle}}
                     textStyle={{...ButtonStyles.textStyle, ...style.buttonTextStyle}}
+                    onPress={()=>navigation.navigate("Dates")}
+                />
+                <Button 
+                    text="DODAJ ZDJĘCIE"
+                    style={{...ButtonStyles.buttonStyle, ...style.buttonStyle}}
+                    textStyle={{...ButtonStyles.textStyle, ...style.buttonTextStyle}}
                 />
 
                 <CheckBox 

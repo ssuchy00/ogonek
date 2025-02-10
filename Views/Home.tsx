@@ -131,7 +131,7 @@ const Home = () => {
                     style={{...ButtonStyles.buttonStyle, backgroundColor: COLORS.mainColor, ...center, marginTop: 20}}
                     text="ZAŁÓŻ KONTO"
                     textStyle={{...ButtonStyles.textStyle, color: "#fff"}}
-                    onPress={()=>navigation.navigate("Register")} 
+                    onPress={()=>navigation.navigate("AccountSettings_addressInfo")} 
                 />
                 {/* Arrow to top */}
                 <View style={{display: "flex", flexDirection: "row", alignContent: "center", justifyContent: "center", marginTop: 50}}>

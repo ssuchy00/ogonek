@@ -11,6 +11,8 @@ import { RootStackParamList } from "../App";
 import { NativeSearchBar } from "react-native-screens"; 
 import { petInterface } from "./Pet";
 import PetsList from "../Components/PetsList";
+import APIHandler from "../Functions/APIHandler";
+import { COULDNT_FETCH_PETS_DATA, showToast } from "../Functions/Utils";
 
 
 type myPetsScreenProp = StackNavigationProp<RootStackParamList, 'MyPets'>;
@@ -33,15 +35,28 @@ export const petsArr:Array<petInterface> = [
 const MyPets = () => {
 
     const navigation = useNavigation<myPetsScreenProp>();
+    const [pets, setPets] = useState<Array<petInterface>>([]);
 
     const petOnClickHandle = (pet:petInterface) => {
         navigation.navigate("Pet", {pet})
     }
 
+    const fetchPetsData = async () => {
+        const {res,data} = await APIHandler.fetchUserPets();
+        if(res==200)
+            setPets(data);
+        else 
+            showToast(COULDNT_FETCH_PETS_DATA)
+    }
+
+    useEffect(()=>{
+        fetchPetsData();
+    }, [])
+
     return (
         <>
         <Text style={style.headerStyle}>Twoje zwierzęta</Text>
-        <PetsList onChoose={petOnClickHandle} />
+        <PetsList pets={pets} onChoose={petOnClickHandle} />
         <Button text="DODAJ ZWIERZĘ" style={{backgroundColor: COLORS.mainColor, ...ButtonStyles.buttonStyle, left: vw(5), position: 'absolute', bottom: 10}} textStyle={{color: "#fff", ...ButtonStyles.textStyle}}/>
         </>
     )

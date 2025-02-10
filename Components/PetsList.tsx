@@ -7,7 +7,8 @@ import { petInterface } from "../Views/Pet";
 import PetListElement from "./PetListElement";
 
 export interface PetsListInterface {
-    onChoose: (pet:petInterface)=>void
+    onChoose: (pet:petInterface)=>void,
+    pets?:Array<any>
 }
 
 const PetsList = (props:PetsListInterface) => {

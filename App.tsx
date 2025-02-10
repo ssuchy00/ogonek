@@ -14,6 +14,9 @@ import BookAppointment_screen3, { BookAppointment_screen3Interface } from "./Vie
 import BookAppointment_screen4, { BookAppointment_screen4Interface } from "./Views/BookAppointment_screen4";
 import MedicalRecords, { MedicalRecordsInterface } from "./Views/MedicalRecords";
 import MedicalRecords_choosePet from "./Views/MedicalRecords_choosePet";
+import Dates from "./Views/Dates";
+import AccountSettings from "./Views/AccountSettings";
+import AccountSettings_addressInfo from "./Views/AccountSettings_addressInfo";
 
 
 
@@ -29,6 +32,9 @@ export type RootStackParamList = {
   BookAppointment_screen4: BookAppointment_screen4Interface
   MedicalRecordsChoosePet: MedicalRecordsInterface
   MedicalRecords: MedicalRecordsInterface
+  Dates: undefined
+  AccountSettings: undefined
+  AccountSettings_addressInfo: undefined
 };
 
 const App = () => {
@@ -55,6 +61,9 @@ const App = () => {
             <Stack.Screen name="BookAppointment_screen4" component={BookAppointment_screen4} options={{title: "Umów wizytę"}}/>
             <Stack.Screen name="MedicalRecordsChoosePet" component={MedicalRecords_choosePet} options={{title: "Historia leczenia"}}/>
             <Stack.Screen name="MedicalRecords" component={MedicalRecords} options={{title: "Historia leczenia"}} />
+            <Stack.Screen name="Dates" component={Dates} options={{title: "Terminy"}} />
+            <Stack.Screen name="AccountSettings" component={AccountSettings} options={{title: "Ustawienia konta"}} />
+            <Stack.Screen name="AccountSettings_addressInfo" component={AccountSettings_addressInfo} options={{title: "Ustawienia konta"}} />
           </Stack.Navigator>
     </NavigationContainer>
   )
